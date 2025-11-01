@@ -21,7 +21,8 @@ document.getElementById("appealForm").addEventListener("submit", async (e) => {
   result.textContent = "⏳ Envoi en cours...";
 
   try {
-    const res = await fetch(PROXY_URL, {
+    const res = await fetch(scp-rp-proxy.tristando717.workers.dev
+, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
@@ -38,3 +39,4 @@ document.getElementById("appealForm").addEventListener("submit", async (e) => {
     console.error(err);
   }
 });
+
