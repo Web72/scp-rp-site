@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCP RP Roblox | Débanissement</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <header>
+      <img src="image/95.jpg" alt="Logo SCP" class="logo">
+      <h1>SCP RP Roblox</h1>
+      <p>Demande de débanissement officielle</p>
+      <a href="https://discord.gg/X8PaSnr7nH" class="discord-link" target="_blank">Rejoindre le Discord</a>
+    </header>
+
+    <main>
+      <form id="appealForm">
+        <label>Nom Roblox *</label>
+        <input type="text" id="roblox" required>
+
+        <label>Discord (pseudo#0000) *</label>
+        <input type="text" id="discord" required>
+
+        <label>Date du ban</label>
+        <input type="date" id="date">
+
+        <label>Raison du ban (si connue)</label>
+        <input type="text" id="reason">
+
+        <label>Preuves (lien, vidéo...)</label>
+        <input type="text" id="evidence">
+
+        <label>Explique ta demande *</label>
+        <textarea id="explain" required></textarea>
+
+        <button type="submit">Envoyer la demande</button>
+      </form>
+
+      <p id="result"></p>
+    </main>
+
+    <footer>
+      <p>© SCP RP Roblox - Projet communautaire | Hébergé sur GitHub Pages</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
