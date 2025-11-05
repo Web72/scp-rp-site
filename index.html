@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Carte Mentale - Fondation SCP</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.3.18/go.js"></script>
+<style>
+  html, body { height: 100%; margin: 0; background-color: #0e0e0e; }
+  #mindmap { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div id="mindmap"></div>
+
+<script>
+const $ = go.GraphObject.make;
+
+// Diagramme fixe, centré, non déplaçable
+const diagram = $(go.Diagram, "mindmap", {
+  initialAutoScale: go.Diagram.Uniform,
+  allowMove: false,
+  allowZoom: true,
+  allowSelect: false,
+  "animationManager.isEnabled": false,
+  layout: $(go.TreeLayout, { angle: 90, layerSpacing: 80, arrangement: go.TreeLayout.ArrangementCenter })
+});
+
+// Style des nœuds
+diagram.nodeTemplate =
+  $(go.Node, "Auto",
+    $(go.Shape, "RoundedRectangle", 
+      { strokeWidth: 2, stroke: "#fff" },
+      new go.Binding("fill", "color")
+    ),
+    $(go.TextBlock, 
+      { margin: 10, font: "bold 12pt Segoe UI", stroke: "#fff", textAlign: "center" },
+      new go.Binding("text", "key")
+    )
+  );
+
+// Modèle de la carte sans niveaux
+diagram.model = new go.TreeModel([
+  // Niveau 7 - Sommet
+  { key: "Administrateur", color: "#8B0000" },
+
+  // Niveau 6
+  { key: "Conseil O5", parent: "Administrateur", color: "#B22222" },
+
+  // Niveau 5
+  { key: "Conseil Directeur", parent: "Conseil O5", color: "#800080" },
+
+  // Niveau 4
+  { key: "A1", parent: "Conseil Directeur", color: "#AA0000" },
+
+  // Niveau 3
+  { key: "Département des Affaires Internes", parent: "A1", color: "#FF69B4" },
+  { key: "Département des Affaires Externes", parent: "A1", color: "#00CED1" },
+
+  // Niveau 2
+  { key: "Département Administratif", parent: "Département des Affaires Internes", color: "#FFA500" },
+  { key: "Département Judiciaire", parent: "Département des Affaires Internes", color: "#DC143C" },
+  { key: "Département de la Déontologie", parent: "Département des Affaires Internes", color: "#FFD700" },
+
+  // Niveau 1
+  { key: "Département Sécuritaire", parent: "Département Administratif", color: "#1E90FF" },
+  { key: "Département d’Intervention Rapide", parent: "Département Administratif", color: "#4169E1" },
+
+  // Forces spéciales sous Intervention Rapide
+  { key: "FIM Epsilon-11", parent: "Département d’Intervention Rapide", color: "#00BFFF" },
+  { key: "FIM Nu-7", parent: "Département d’Intervention Rapide", color: "#4682B4" },
+
+  // Base (niveau 0)
+  { key: "Département Médical", parent: "Département Sécuritaire", color: "#32CD32" },
+  { key: "Département Scientifique", parent: "Département Sécuritaire", color: "#9370DB" },
+  { key: "Département de la Maintenance", parent: "Département Sécuritaire", color: "#708090" }
+]);
+</script>
+</body>
+</html>
