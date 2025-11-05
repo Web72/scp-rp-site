@@ -38,7 +38,7 @@ diagram.nodeTemplate =
     )
   );
 
-// Modèle de la carte
+// Modèle de la carte sans niveaux
 diagram.model = new go.TreeModel([
   // Niveau 7 - Sommet
   { key: "Administrateur", color: "#8B0000" },
@@ -47,10 +47,10 @@ diagram.model = new go.TreeModel([
   { key: "Conseil O5", parent: "Administrateur", color: "#B22222" },
 
   // Niveau 5
-  { key: "Conseil des Superviseurs", parent: "Conseil O5", color: "#800080" },
+  { key: "Conseil Directeur", parent: "Conseil O5", color: "#800080" },
 
   // Niveau 4
-  { key: "A1", parent: "Conseil des Superviseurs", color: "#AA0000" },
+  { key: "A1", parent: "Conseil Directeur", color: "#AA0000" },
 
   // Niveau 3
   { key: "Département des Affaires Internes", parent: "A1", color: "#FF69B4" },
